@@ -1,0 +1,246 @@
+:root {
+  /* 字体颜色 begin */
+
+  /* 标题 */
+  --color-font-title: #181c32;
+
+  /* 正文 */
+  --color-font-normal: #5e6278;
+
+  /* 辅助文字 */
+  --color-font-secondary: #181c3299;
+
+  /* 占位 */
+  --color-font-placeholder: #181c3266;
+
+  /* 禁用 */
+  --color-font-disabled: #5e627866;
+
+  /* 背景色字体反转  */
+  --color-font-reverse: #fff;
+
+  /* 字体颜色 end */
+
+  /* 背景色 begin */
+
+  /* 表格表头 */
+  --color-bg-table-header: #eaeef2;
+
+  /* 页面标签 */
+  --color-bg-page-tag: #f5f8fa;
+
+  /* 整体页面背景 */
+  --color-bg-page: #f5f8fa;
+
+  /* 左侧导航背景/内容区域背景 */
+  --color-bg-page-content: #fff;
+
+  /* 输入框、表格悬浮、表单下拉面板选中 */
+  --color-bg-input: #f5f8fa;
+
+  /* 双色图标背景色 */
+  --color-bg-icon: #f3f6f9;
+
+  /* 背景色 end */
+
+  /* 双色图标 begin */
+
+  /* 无背景-深色 */
+  --color-icon-dark: #a1a5b7;
+  --color-icon-light: #e3e4e9;
+  --color-bgicon-dark: #71778d;
+  --color-bgicon-light: #b9bac5;
+
+  /* 双色图标 end */
+
+  /* 功能色 begin */
+
+  /* 信息提示 */
+  --color-primary: #029ef7;
+  --color-info: var(--color-primary);
+
+  /* 成功提示 */
+  --color-success: #50cd89;
+
+  /* 失败提示 */
+  --color-error: #f1416c;
+
+  /* 警告提示 */
+  --color-warning: #ffc700;
+
+  /* 功能色 end */
+
+  /* 分割线 begin */
+  --color-divider: #f0f3f5;
+
+  /* 表格分割线 */
+  --color-divider-table: #f5f8fa;
+
+  /* 分割线 end */
+
+  /* 标签 begin */
+
+  /* 主色 */
+  --color-tag-primary: var(--color-primary);
+  --color-tag-primary-light: #e5f5fe;
+
+  /* 辅助色 */
+  --color-tag-success: var(--color-success);
+  --color-tag-success-light: #e6f8ee;
+
+  /* 辅助色 */
+  --color-tag-error: var(--color-error);
+  --color-tag-error-light: #fdecf0;
+
+  /* 辅助色 */
+  --color-tag-warning: var(--color-warning);
+  --color-tag-warning-light: #ffc700;
+
+  /* 标签 end */
+
+  /* 按钮 begin */
+
+  /* 次要按钮 */
+  --color-bg-button-secondary: #d9f1fe;
+  --color-font-button-secondary: #029ef7;
+  --color-bg-button-secondary-mousedown: #b4e2fc;
+  --color-font-button-secondary-mousedown: #029ef7;
+  --color-bg-button-secondary-hover: #cdedfd;
+  --color-font-button-secondary-hover: #029ef7;
+  --color-bg-button-secondary-disabled: #cdedfd;
+  --color-font-button-secondary-disabled: #afdffc;
+
+  /* 按钮 end */
+}
+
+:root.dark {
+  /* 字体颜色 begin */
+
+  /* 1 标题 #FFFFFF 90% */
+  --color-font-title: #ffffffe6;
+
+  /* 2 正文 */
+  --color-font-normal: #92929f;
+
+  /* 3 辅助文字 #FFFFFF 60% */
+  --color-font-secondary: #fff9;
+
+  /* 4 占位 #FFFFFF 40% */
+  --color-font-placeholder: #fff6;
+
+  /* 5 禁用 #92929F 40% */
+  --color-font-disabled: #92929f66;
+
+  /* 背景色字体反转  */
+  --color-font-reverse: #5e6278;
+
+  /* 字体颜色 end */
+
+  /* 背景色 begin */
+
+  /* 6 表格表头 #28283C 70% */
+  --color-bg-table-header: #28283cb3;
+
+  /* 7 页面标签 #28283C */
+  --color-bg-page-tag: #28283c;
+
+  /* 9 整体页面背景 #151521 */
+  --color-bg-page: #151521;
+
+  /* 10 左侧导航背景/内容区域背景 #1E1E2D */
+  --color-bg-page-content: #1e1e2d;
+
+  /* 11 输入框、表格悬浮、表单下拉面板选中 #2B2B40 */
+  --color-bg-input: #2b2b40;
+
+  /*  15 双色图标背景色 #2B2B40 */
+  --color-bg-icon: #2b2b40;
+
+  /* 背景色 end */
+
+  /* 双色图标 begin */
+
+  /* 13 无背景-深色 #50526B */
+  --color-icon-dark: #50526b;
+
+  /* 14 无背景-浅色 #C5C5D8 */
+  --color-icon-light: #c5c5d8;
+
+  /* 16 带背景-浅色 #81869E */
+  --color-bgicon-dark: #81869e;
+
+  /* 17 带背景-深色 #50526B */
+  --color-bgicon-light: #50526b;
+
+  /* 双色图标 end */
+
+  /* 功能色 begin */
+
+  --color-primary: #029ef7;
+
+  /* 18 信息提示 #029EF7 */
+  --color-info: var(--color-primary);
+
+  /* 19 成功提示 #50CD89 */
+  --color-success: #50cd89;
+
+  /* 20 失败提示 #F1416C */
+  --color-error: #f1416c;
+
+  /* 21 警告提示 #FFC700 */
+  --color-warning: #ffc700;
+
+  /* 功能色 end */
+
+  /* 分割线 begin */
+
+  /* 8 分割线 #2B2B40 */
+  --color-divider: #2b2b40;
+
+  /* 12 表格分割线 #2B2B40 */
+  --color-divider-table: #2b2b40;
+
+  /* 分割线 end */
+
+  /* 标签 begin */
+
+  /* 22 主色-深 #029EF7 */
+  --color-tag-primary: var(--color-primary);
+
+  /* 22 主色-浅 #212E48 */
+  --color-tag-primary-light: #212e48;
+
+  /* 23 成功-深 */
+  --color-tag-success: var(--color-success);
+
+  /* 23 成功-浅 #1D3238 */
+  --color-tag-success-light: #1d3238;
+
+  /* 24 错误-深 */
+  --color-tag-error: var(--color-error);
+
+  /* 24 错误-浅 #3A2434 */
+  --color-tag-error-light: #3a2434;
+
+  /* 25 警告-深 */
+  --color-tag-warning: var(--color-warning);
+
+  /* 25 警告-浅 #392F28 */
+  --color-tag-warning-light: #392f28;
+
+  /* 标签 end */
+
+  /* 按钮 begin */
+
+  /* 次要按钮 */
+  --color-bg-button-secondary: #d9f1fe;
+  --color-font-button-secondary: #029ef7;
+  --color-bg-button-secondary-mousedown: #b4e2fc;
+  --color-font-button-secondary-mousedown: #029ef7;
+  --color-bg-button-secondary-hover: #cdedfd;
+  --color-font-button-secondary-hover: #029ef7;
+  --color-bg-button-secondary-disabled: #cdedfd;
+  --color-font-button-secondary-disabled: #afdffc;
+
+  /* 按钮 end */
+}

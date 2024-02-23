@@ -1,54 +1,78 @@
 <script setup lang="ts">
-import { useStore } from '@/stores'
-import { localStorage } from '@/utils/local-storage'
+import { useRoute } from 'vue-router'
+import { api } from '@/api/form-render'
 
+// 路由配置
 definePage({
-  name: 'index',
+  name: 'render',
+  path: '/',
   meta: {
     level: 1,
   },
 })
 
-const store = useStore()
-const themeStore = localStorage.get('theme')
-const checked = ref<boolean>(themeStore === 'dark')
+const route = useRoute()
+const renderRef = ref<any>(null)
+// 页面状态
+const state = reactive<any>({
+  visible: false,
+  // 表单定义 JSON
+  formJson: '',
+  // 渲染器数据源全局请求头
+  headers: [{
+    name: 'Authorization',
+    value: 'Bearer iking',
+  }, {
+    name: 'X-Domain',
+    value: route.query.domain,
+  }, {
+    name: 'X-App',
+    value: route.query.app,
+  }],
+})
 
-watch(checked, (val) => {
-  if (val) {
-    store.mode = 'dark'
-    localStorage.set('theme', 'dark')
+// 加载表单 JSON
+async function loadFormJson() {
+  const { page } = route.query
+
+  const headers = { 'Content-Type': 'text/plain' }
+
+  state.headers.forEach((item: any) => headers[item.name] = item.value)
+
+  if(route.query.tenant){
+    //
+    headers['X-Tenant'] = route.query.tenant;
   }
-  else {
-    store.mode = 'light'
-    localStorage.set('theme', 'light')
+  const config = {
+    headers,
   }
+  const res: any = await api.loadFormJson(page, config)
+  if (!res.success){
+    console.error(res.msg)
+    return
+  }
+  if(res.data.json){
+    state.formJson = JSON.parse(res.data.json)
+    state.visible = true
+  }
+  
+}
+
+onMounted(() => {
+  loadFormJson()
 })
 </script>
 
 <template>
   <div class="container">
-    <VanCellGroup title="一个集成最新技术栈、完整干净的移动端模板" inset>
-      <VanCell center title="🌗 暗黑模式">
-        <template #right-icon>
-          <VanSwitch v-model="checked" size="23px" />
-        </template>
-      </VanCell>
-
-      <VanCell title="💿 Mock 指南" to="mock" is-link />
-
-      <VanCell title="📊 Echarts 演示" to="charts" is-link />
-
-      <VanCell title="🪶 Unocss 示例" to="unocss" is-link />
-
-      <VanCell center>
-        <template #title>
-          <span class="custom-title">🎨 欢迎补充</span>
-          <VanTag type="primary">
-            PR
-          </VanTag>
-        </template>
-      </VanCell>
-    </VanCellGroup>
+    <VFormRender
+      v-if="state.visible"
+      ref="renderRef"
+      :global-dsv="{}"
+      previewLayout="H5"
+      :form-json="state.formJson"
+      :global-datasource-headers="state.headers"
+    />
   </div>
 </template>
 
@@ -56,7 +80,8 @@ watch(checked, (val) => {
 .container {
   width: 100%;
   height: 100%;
-  padding-top: 30px;
+
+  background-color: var(--color-bg-page-content);
 
   .custom-title {
     margin-right: 4px;

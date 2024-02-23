@@ -22,13 +22,17 @@ import mockDevServerPlugin from 'vite-plugin-mock-dev-server'
 
 import UnoCSS from 'unocss/vite'
 
+// 打包文件压缩插件
+import { compression } from 'vite-plugin-compression2'
+
+
 export default ({ command, mode }: ConfigEnv): UserConfig => {
   const root = process.cwd()
   const env = loadEnv(mode, root)
 
   return {
     base: env.VITE_APP_PUBLIC_PATH,
-
+    clearScreen: false,
     plugins: [
       VueRouter({
         routesFolder: 'src/views',
@@ -71,12 +75,19 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
 
       viteVConsole({
         entry: [path.resolve('src/main.ts')],
+        // 在开发环境中开启
         enabled: command === 'serve',
         config: {
           maxLogNumber: 1000,
           theme: 'light',
         },
       }),
+      // 打包文件压缩
+      // compression({
+      //   threshold: 10000, // 只有超过 2k 的文件才执行压缩
+      //   deleteOriginalAsserts: false, // 设置是否删除原文件
+      //   skipIfLargerOrEqual: false // 如果压缩后的文件大小与原文件大小一致或者更大时，不进行压缩
+      // })
     ],
 
     css: {
@@ -108,13 +119,16 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     server: {
       host: true,
       port: 3000,
-      proxy: {
-        '/api': {
-          target: '',
-          ws: false,
-          changeOrigin: true,
-        },
-      },
-    },
+      // proxy: {
+      //   '/api': {
+      //     target: 'http://192.168.2.45:6003',
+      //     changeOrigin: true,
+      //     rewrite: (path) => path.replace(/^\/api/, ''),
+      //   },
+      // },
+      hmr: {
+        overlay: false
+      }
+    }
   }
 }
